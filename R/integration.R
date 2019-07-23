@@ -47,7 +47,7 @@ integrate_gq <- function(fun, dimensions, center=rep(0,dimensions),
   # evaluate function on all grid points
   grid.results <- do.call(fun, call.args)
   # calculate weighted sum
-  det(sqrt_scale) * grid.results %*% adp_weights
+  drop(det(sqrt_scale) * grid.results %*% adp_weights)
 }
 
 
