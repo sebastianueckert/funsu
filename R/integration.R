@@ -48,6 +48,8 @@ expect_norm_gq <- function(fun, dimensions = 1, center=rep(0,dimensions),
   call.args <- c(additional.args, list(adp_grid_points))
   # evaluate function on all grid points
   grid.results <- do.call(fun, call.args)
+  # transpose evaluation results to allow easier definition of f
+  if(dimensions==1) grid.results <- t(grid.results)
   # calculate weighted sum
   drop(det(sqrt_scale) * grid.results %*% adp_weights)
 }
