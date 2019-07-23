@@ -1,12 +1,14 @@
 Package: funsu
-Type: Package
-Title: What the Package Does (Title Case)
+Title: Collection of Useful Functions
 Version: 0.0.0.9000
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    person(given = "Sebastian",
+           family = "Ueckert",
+           role = c("aut", "cre"),
+           email = "sebastian.ueckert@gmail.com",
+           comment = c(ORCID = "0000-0002-3712-0255"))
+Description: Collection of Useful Functions
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
