@@ -13,7 +13,9 @@
 #' @export
 #'
 #' @examples
-integrate_gq <- function(fun, dimensions, center=rep(0,dimensions),
+#' f <- function(x) x^2
+#' expect_norm_gq(f, 1)
+expect_norm_gq <- function(fun, dimensions, center=rep(0,dimensions),
                          scale=diag(1,dimensions), settings=defaults.gq(), ...){
   if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.")
 
