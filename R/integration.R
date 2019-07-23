@@ -17,7 +17,7 @@
 #' expect_norm_gq(f)
 expect_norm_gq <- function(fun, dimensions = 1, center=rep(0,dimensions),
                          scale=diag(1,dimensions), settings=defaults.gq(), ...){
-  if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.")
+  if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
 
   additional.args <- c(list(), list(...))
   gq_settings <- filter_settings(settings, "gq")
