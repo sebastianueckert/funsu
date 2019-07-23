@@ -4,7 +4,7 @@
 \alias{expect_norm_gq}
 \title{Calculate the expected value of f(X) with X~N(mu, sigma)}
 \usage{
-expect_norm_gq(fun, dimensions, center = rep(0, dimensions),
+expect_norm_gq(fun, dimensions = 1, center = rep(0, dimensions),
   scale = diag(1, dimensions), settings = defaults.gq(), ...)
 }
 \arguments{
@@ -28,5 +28,5 @@ Calculate the expected value of f(X) with X~N(mu, sigma)
 }
 \examples{
 f <- function(x) x^2
-expect_norm_gq(f, 1)
+expect_norm_gq(f)
 }
