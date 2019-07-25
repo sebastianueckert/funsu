@@ -34,24 +34,25 @@ expect_norm_gq <- function(fun, dimensions = 1, center=rep(0,dimensions),
   gq <- statmod::gauss.quad.prob(n.quad.points, dist = "normal")
   # took out nearPD to control non-positive definitness better
   # sqrt_scale <- t(chol(nearPD(scale)$mat))
-  sqrt_scale <- t(chol(scale))
-
   std_grid_matrix <- matrix(rep(gq$nodes, ndim), ncol=ndim, byrow = F)
   std_grid_points <- do.call(expand.grid, as.data.frame(std_grid_matrix))
-  adp_grid_points <- matrix(apply(std_grid_points, 1, function(z) as.matrix(center+sqrt_scale%*%z)), ncol = ndim, byrow = T)
+
+  eig <- eigen(scale)
+  rot <- eig$vectors %*% diag(sqrt(eig$values), nrow = ndim, ncol = ndim)
+  scaled_grid_points <- t(rot %*% t(std_grid_points)) + center
+
 
   std_weights_matrix <- matrix(rep(gq$weights, ndim), ncol=ndim, byrow = F)
   std_weights <-do.call(expand.grid, as.data.frame(std_weights_matrix))
 
-  adp_weights <- apply(std_weights, 1, prod) * apply(adp_grid_points, 1, function(z) prod(dnorm(z)))/apply(std_grid_points, 1, function(z)prod(dnorm(z)))
-
-  call.args <- c(additional.args, list(adp_grid_points))
+  weights <- apply(std_weights, 1, prod)
+  call.args <- c(additional.args, list(scaled_grid_points))
   # evaluate function on all grid points
   grid.results <- do.call(fun, call.args)
   # transpose evaluation results to allow easier definition of f
   grid.results <- t(grid.results)
   # calculate weighted sum
-  drop(det(sqrt_scale) * grid.results %*% adp_weights)
+  drop(grid.results %*% weights)
 }
 
 
