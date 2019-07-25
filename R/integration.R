@@ -4,8 +4,8 @@
 #'
 #' @param fun Function to integrate
 #' @param dimensions Number of dimensions of X
-#' @param center Mean of X
-#' @param scale Variance of X
+#' @param mu Mean of X
+#' @param sigma Variance of X
 #' @param settings Settings
 #' @param ... Arguments to f
 #'
@@ -15,8 +15,8 @@
 #' @examples
 #' f <- function(x) x^2
 #' expect_norm_gq(f)
-expect_norm_gq <- function(fun, dimensions = 1, center=rep(0,dimensions),
-                         scale=diag(1,dimensions), settings=defaults.gq(), ...){
+expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
+                         sigma=diag(1,dimensions), settings=defaults.gq(), ...){
   if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
 
   additional.args <- c(list(), list(...))
@@ -32,8 +32,6 @@ expect_norm_gq <- function(fun, dimensions = 1, center=rep(0,dimensions),
     ndim <- 1
   }
   gq <- statmod::gauss.quad.prob(n.quad.points, dist = "normal")
-  # took out nearPD to control non-positive definitness better
-  # sqrt_scale <- t(chol(nearPD(scale)$mat))
   std_grid_matrix <- matrix(rep(gq$nodes, ndim), ncol=ndim, byrow = F)
   std_grid_points <- do.call(expand.grid, as.data.frame(std_grid_matrix))
 

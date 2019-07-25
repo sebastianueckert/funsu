@@ -4,17 +4,17 @@
 \alias{expect_norm_gq}
 \title{Calculate the expected value of f(X) with X~N(mu, sigma)}
 \usage{
-expect_norm_gq(fun, dimensions = 1, center = rep(0, dimensions),
-  scale = diag(1, dimensions), settings = defaults.gq(), ...)
+expect_norm_gq(fun, dimensions = 1, mu = rep(0, dimensions),
+  sigma = diag(1, dimensions), settings = defaults.gq(), ...)
 }
 \arguments{
 \item{fun}{Function to integrate}
 
 \item{dimensions}{Number of dimensions of X}
 
-\item{center}{Mean of X}
+\item{mu}{Mean of X}
 
-\item{scale}{Variance of X}
+\item{sigma}{Variance of X}
 
 \item{settings}{Settings}
 
