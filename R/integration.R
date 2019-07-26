@@ -37,7 +37,7 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
 
   eig <- eigen(sigma)
   rot <- eig$vectors %*% diag(sqrt(eig$values), nrow = ndim, ncol = ndim)
-  scaled_grid_points <- t(rot %*% t(std_grid_points)) + mu
+  scaled_grid_points <- t(rot %*% t(std_grid_points) + mu)
 
 
   std_weights_matrix <- matrix(rep(gq$weights, ndim), ncol=ndim, byrow = F)
