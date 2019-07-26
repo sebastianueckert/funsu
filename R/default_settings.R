@@ -5,7 +5,8 @@ default_settings <- list(
     gq.quad_points = 5
   ),
   mc = list(
-    mc.n_samples = 1000
+    mc.n_samples = 1000,
+    mc.seed = 1234
   )
   # agq = list(
   #   derivative_step = 1E-6,

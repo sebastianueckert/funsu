@@ -63,6 +63,7 @@ expect_norm_mc <- function(fun, dimensions, mu=rep(0,dimensions),
   additional.args <- c(list(), list(...))
   mc_settings <- filter_settings(settings, "mc")
   n.samples <- mc_settings$n_samples
+  if(!is.null(mc_settings$seed)) set.seed(mc_settings$seed)
   if(is.character(dimensions)) {
     ndim <- length(dimensions)
   }else{
