@@ -21,8 +21,8 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
   if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
 
   additional.args <- c(list(), list(...))
-  gq_settings <- filter_settings(settings, "gq")
-  n.quad.points <- gq_settings$quad_points
+  check_required_settings(settings, "quad_points")
+  n.quad.points <- settings$quad_points
   if(is.character(dimensions)) {
     ndim <- length(dimensions)
   }else{
@@ -61,9 +61,9 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
 expect_norm_mc <- function(fun, dimensions, mu=rep(0,dimensions),
                            sigma=diag(1,dimensions), settings=defaults.mc(), ...){
   additional.args <- c(list(), list(...))
-  mc_settings <- filter_settings(settings, "mc")
-  n.samples <- mc_settings$n_samples
-  if(!is.null(mc_settings$seed)) set.seed(mc_settings$seed)
+  check_required_settings(settings, "n_samples")
+  n.samples <- settings$n_samples
+  if(!is.null(settings$seed)) set.seed(settings$seed)
   if(is.character(dimensions)) {
     ndim <- length(dimensions)
   }else{

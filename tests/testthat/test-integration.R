@@ -26,3 +26,7 @@ test_that("mc expected value calculation in 4D works", {
 
 })
 
+test_that("error message is shown when required settings are missing",{
+  expect_error(expect_norm_gq(function(x)x,1,settings = list()))
+  expect_error(expect_norm_mc(function(x)x,1,settings = list()))
+})
