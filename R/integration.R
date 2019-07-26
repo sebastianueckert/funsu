@@ -12,6 +12,7 @@
 #' @return Numeric value of the integral
 #' @export
 #'
+#' @describeIn expect_norm_gq Calculation using Gaussian quadrature
 #' @examples
 #' f <- function(x) x^2
 #' expect_norm_gq(f)
@@ -54,9 +55,14 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
 }
 
 
-integrate_mc <- function(fun, dimensions, settings=filter_settings(defaults.agq(), "mc"), ...){
+
+#' @describeIn expect_norm_gq Calculation using Monte-Carlo sampling
+#' @export
+expect_norm_mc <- function(fun, dimensions, mu=rep(0,dimensions),
+                           sigma=diag(1,dimensions), settings=defaults.mc(), ...){
   additional.args <- c(list(), list(...))
-  n.samples <- settings$n_samples
+  mc_settings <- filter_settings(settings, "mc")
+  n.samples <- mc_settings$n_samples
   if(is.character(dimensions)) {
     ndim <- length(dimensions)
   }else{
@@ -70,10 +76,15 @@ integrate_mc <- function(fun, dimensions, settings=filter_settings(defaults.agq(
   if(is.character(dimensions)) {
     colnames(param.samples) <- dimensions
   }
-  call.args <- c(additional.args, list(param.samples))
+
+  eig <- eigen(sigma)
+  rot <- eig$vectors %*% diag(sqrt(eig$values), nrow = ndim, ncol = ndim)
+  scaled_samples <- t(rot %*% t(param.samples) + mu)
+
+  call.args <- c(additional.args, list(scaled_samples))
   mc.results <- do.call(fun, call.args)
   if(!is.matrix(mc.results)) return(mean(mc.results))
-  return(rowMeans(mc.results))
+  return(drop(colMeans(mc.results)))
 }
 
 integrate_mc_lhs <- function(fun, dimensions, settings=filter_settings(defaults.agq(), "mc"), ...){

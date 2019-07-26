@@ -2,10 +2,14 @@
 % Please edit documentation in R/integration.R
 \name{expect_norm_gq}
 \alias{expect_norm_gq}
+\alias{expect_norm_mc}
 \title{Calculate the expected value of f(X) with X~N(mu, sigma)}
 \usage{
 expect_norm_gq(fun, dimensions = 1, mu = rep(0, dimensions),
   sigma = diag(1, dimensions), settings = defaults.gq(), ...)
+
+expect_norm_mc(fun, dimensions, mu = rep(0, dimensions),
+  sigma = diag(1, dimensions), settings = defaults.mc(), ...)
 }
 \arguments{
 \item{fun}{Function to integrate}
@@ -26,6 +30,13 @@ Numeric value of the integral
 \description{
 Calculate the expected value of f(X) with X~N(mu, sigma)
 }
+\section{Functions}{
+\itemize{
+\item \code{expect_norm_gq}: Calculation using Gaussian quadrature
+
+\item \code{expect_norm_mc}: Calculation using Monte-Carlo sampling
+}}
+
 \examples{
 f <- function(x) x^2
 expect_norm_gq(f)
