@@ -21,5 +21,6 @@ The function calculates the expected item score for a given mirt IRT model and a
 mirt model object.
 }
 \examples{
-fit <- mirt::mirt()
+fit <- mirt::mirt(mirt::Science, 1)
+irt_expected_item_response(fit)
 }
