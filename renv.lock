@@ -6,6 +6,24 @@ Version=3.5.2
 Repositories=
 	CRAN=https://cloud.r-project.org
 
+[R/Package/Deriv]
+Package=Deriv
+Version=3.8.5
+Source=CRAN
+Hash=775e17c38fa5519a2c82529db7b4f85e
+
+[R/Package/GPArotation]
+Package=GPArotation
+Version=2014.11-1
+Source=CRAN
+Hash=76721610c9e21fa56db1dd61593c7ea3
+
+[R/Package/MASS]
+Package=MASS
+Version=7.3-51.4
+Source=CRAN
+Hash=a670f645948409d325eddb0b199ed968
+
 [R/Package/Matrix]
 Package=Matrix
 Version=1.2-14
@@ -23,6 +41,12 @@ Package=Rcpp
 Version=1.0.1
 Source=CRAN
 Hash=542a8dbcf371718e4dee591341d28c43
+
+[R/Package/RcppArmadillo]
+Package=RcppArmadillo
+Version=0.9.600.4.0
+Source=CRAN
+Hash=24cc5dd75ba5bd83e3219c83d4773a47
 
 [R/Package/askpass]
 Package=askpass
@@ -72,6 +96,12 @@ Version=1.2.0
 Source=CRAN
 Hash=e4438538e94e5fda0c2950f0e6fd2a33
 
+[R/Package/cluster]
+Package=cluster
+Version=2.1.0
+Source=CRAN
+Hash=89e72dc3312dfb0af59e232dc38bed77
+
 [R/Package/commonmark]
 Package=commonmark
 Version=1.7
@@ -89,6 +119,12 @@ Package=curl
 Version=4.0
 Source=CRAN
 Hash=e73352ac820b038acad6e594946c62bf
+
+[R/Package/dcurver]
+Package=dcurver
+Version=0.9.1
+Source=CRAN
+Hash=9bc7510d9e5ae732dbe2e0d1001446a6
 
 [R/Package/desc]
 Package=desc
@@ -119,6 +155,12 @@ Package=fs
 Version=1.3.1
 Source=CRAN
 Hash=110467e48d2be4583fe18d7bdbbc3c54
+
+[R/Package/funsu]
+Package=funsu
+Version=0.0.0.9000
+Source=unknown
+Hash=47dfc38255dc4a0183119cbd9ed1155c
 
 [R/Package/gh]
 Package=gh
@@ -180,17 +222,41 @@ Version=1.1.0
 Source=CRAN
 Hash=84b2466117129ec55e85c8b3c5eae758
 
+[R/Package/mgcv]
+Package=mgcv
+Version=1.8-28
+Source=CRAN
+Hash=7b78c0b314871340c4f56d38e6b66dd5
+
 [R/Package/mime]
 Package=mime
 Version=0.7
 Source=CRAN
 Hash=054d829092f3869d99d1ac57e4fe21eb
 
+[R/Package/mirt]
+Package=mirt
+Version=1.30
+Source=CRAN
+Hash=bdc87c5669e00bf9f80a9ee180a7fbbf
+
+[R/Package/nlme]
+Package=nlme
+Version=3.1-140
+Source=CRAN
+Hash=fd36fd7954be6770cf36524f9a499557
+
 [R/Package/openssl]
 Package=openssl
 Version=1.4.1
 Source=CRAN
 Hash=6824c3698646e97b3ec8d906fb5db96b
+
+[R/Package/permute]
+Package=permute
+Version=0.9-5
+Source=CRAN
+Hash=851e9678af3f5882feda908a6dbfc757
 
 [R/Package/pkgbuild]
 Package=pkgbuild
@@ -329,6 +395,12 @@ Package=usethis
 Version=1.5.1
 Source=CRAN
 Hash=3599609086a814a2598f099f49b194f1
+
+[R/Package/vegan]
+Package=vegan
+Version=2.5-5
+Source=CRAN
+Hash=444828ac7cea37e64fb7edfbe61198bf
 
 [R/Package/whisker]
 Package=whisker
