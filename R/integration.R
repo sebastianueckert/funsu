@@ -88,6 +88,16 @@ expect_norm_mc <- function(fun, dimensions, mu=rep(0,dimensions),
   return(drop(colMeans(mc.results)))
 }
 
+#'@export
+#' @rdname expect_norm_gq
+settings.gq <- function(quad_points = 5) make_settings()
+
+
+#' @export
+#' @rdname expect_norm_gq
+settings.mc <- function(n_samples = 1000, seed = 123) make_settings()
+
+
 integrate_mc_lhs <- function(fun, dimensions, settings=filter_settings(defaults.agq(), "mc"), ...){
   require(lhs)
   additional.args <- c(list(), list(...))

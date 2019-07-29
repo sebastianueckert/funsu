@@ -1,13 +1,4 @@
-# The code in this file manages the settings for the different methods
 
-#'@export
-settings.mc <- function(n_samples = 1000, seed = 123) make_settings()
-
-#'@export
-settings.gq <- function(quad_points = 5) make_settings()
-
-#'@export
-settings.irt_expected <- function(gq.quad_points = 5) make_settings()
 
 #' Make a settings function
 #'

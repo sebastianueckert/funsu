@@ -2,10 +2,13 @@
 % Please edit documentation in R/irt.R
 \name{irt_expected_item_response}
 \alias{irt_expected_item_response}
+\alias{settings.irt_expected}
 \title{Calculate expected item response for a population}
 \usage{
 irt_expected_item_response(model, mu = NULL, sigma = NULL,
   settings = settings.irt_expected())
+
+settings.irt_expected(gq.quad_points = 5)
 }
 \arguments{
 \item{model}{A \code{mirt} model}
@@ -24,4 +27,7 @@ mirt model object.
 \examples{
 fit <- mirt::mirt(mirt::Science, 1)
 irt_expected_item_response(fit)
+}
+\seealso{
+\code{\link{irt_expected_cov_matrix}}
 }

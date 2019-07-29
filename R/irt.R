@@ -8,6 +8,7 @@
 #' @param sigma The variance-covariance matrix of the latent variable values
 #'
 #' @return A vector with the expected score for each item
+#' @seealso \code{\link{irt_expected_cov_matrix}}
 #' @export
 #'
 #' @examples
@@ -37,6 +38,7 @@ irt_expected_item_response <- function(model, mu = NULL, sigma = NULL, settings 
 #' @param sigma The variance-covariance matrix of the latent variable values
 #'
 #' @return The variance covariance matrix of the assessment
+#' @seealso \code{\link{irt_expected_item_response}}
 #' @export
 #'
 #' @examples
@@ -81,3 +83,9 @@ irt_expected_cov_matrix <- function(model, mu = NULL, sigma = NULL, settings = s
   colnames(cov_matrix) <- rownames(cov_matrix) <- item_names
   cov_matrix
 }
+
+
+
+#'@export
+#'@rdname irt_expected_item_response
+settings.irt_expected <- function(gq.quad_points = 5) make_settings()

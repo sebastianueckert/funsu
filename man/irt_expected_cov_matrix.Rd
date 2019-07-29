@@ -24,3 +24,6 @@ Calculate expected item covariance matrix for a population
 fit <- mirt::mirt(mirt::Science, 1)
 irt_expected_cov_matrix(fit)
 }
+\seealso{
+\code{\link{irt_expected_item_response}}
+}

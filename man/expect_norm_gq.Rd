@@ -3,6 +3,8 @@
 \name{expect_norm_gq}
 \alias{expect_norm_gq}
 \alias{expect_norm_mc}
+\alias{settings.gq}
+\alias{settings.mc}
 \title{Calculate the expected value of f(X) with X~N(mu, sigma)}
 \usage{
 expect_norm_gq(fun, dimensions = 1, mu = rep(0, dimensions),
@@ -10,6 +12,10 @@ expect_norm_gq(fun, dimensions = 1, mu = rep(0, dimensions),
 
 expect_norm_mc(fun, dimensions, mu = rep(0, dimensions),
   sigma = diag(1, dimensions), settings = settings.mc(), ...)
+
+settings.gq(quad_points = 5)
+
+settings.mc(n_samples = 1000, seed = 123)
 }
 \arguments{
 \item{fun}{Function to integrate}
