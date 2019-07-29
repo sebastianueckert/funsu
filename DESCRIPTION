@@ -20,4 +20,5 @@ URL: https://github.com/sebastianueckert/funsu
 BugReports: https://github.com/sebastianueckert/funsu/issues
 Imports: 
     purrr,
-    magrittr
+    magrittr,
+    stringr
