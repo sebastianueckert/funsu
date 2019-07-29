@@ -1,10 +1,14 @@
 # The code in this file manages the settings for the different methods
 
 #'@export
-defaults.mc <- function(n_samples = 1000, seed = 123) rlang::fn_fmls()
+defaults.mc <- function(n_samples = 1000, seed = 123) merge_fmls_args()
 
 #'@export
-defaults.gq <- function(quad_points = 5) rlang::fn_fmls()
+defaults.gq <- function(quad_points = 5) merge_fmls_args()
+
+#'@export
+defaults.irt_expected <- function(gq.quad_points = 5) merge_fmls_args()
+
 # function combines the formals of the calling function with the arguments of the acutal call and returns
 # the results as a list
 merge_fmls_args <- function() {
@@ -21,8 +25,10 @@ check_required_settings <- function(settings, required){
   if(length(not_available)!=0) rlang::abort(msg)
 }
 
+
 filter_settings <- function(settings, prefix){
   filtered <- settings[grepl(paste0(prefix,"."), names(settings))]
   names(filtered) <- gsub(paste0(prefix,"."),"", names(filtered))
   filtered
 }
+
