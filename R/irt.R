@@ -13,7 +13,7 @@
 #' @examples
 #' fit <- mirt::mirt(mirt::Science, 1)
 #' irt_expected_item_response(fit)
-irt_expected_item_response <- function(model, mu = NULL, sigma = NULL, settings = defaults.irt_expected()){
+irt_expected_item_response <- function(model, mu = NULL, sigma = NULL, settings = settings.irt_expected()){
   if(!requireNamespace("mirt", quietly = TRUE)) stop("The mirt package is need for this function.", call. = F)
   if(is.null(mu))  mu <- mirt::coef(model, simplify = T)$means
   if(is.null(sigma)) sigma <- mirt::coef(model, simplify = T)$cov
@@ -42,7 +42,7 @@ irt_expected_item_response <- function(model, mu = NULL, sigma = NULL, settings 
 #' @examples
 #' fit <- mirt::mirt(mirt::Science, 1)
 #' irt_expected_cov_matrix(fit)
-irt_expected_cov_matrix <- function(model, mu = NULL, sigma = NULL, settings = defaults.irt_expected()){
+irt_expected_cov_matrix <- function(model, mu = NULL, sigma = NULL, settings = settings.irt_expected()){
   if(!requireNamespace("mirt", quietly = TRUE)) stop("The mirt package is need for this function.", call. = F)
   if(is.null(mu))  mu <- mirt::coef(model, simplify = T)$means
   if(is.null(sigma)) sigma <- mirt::coef(model, simplify = T)$cov

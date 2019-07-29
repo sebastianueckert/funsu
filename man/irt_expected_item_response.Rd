@@ -4,7 +4,8 @@
 \alias{irt_expected_item_response}
 \title{Calculate expected item response for a population}
 \usage{
-irt_expected_item_response(model, mu = NULL, sigma = NULL)
+irt_expected_item_response(model, mu = NULL, sigma = NULL,
+  settings = settings.irt_expected())
 }
 \arguments{
 \item{model}{A \code{mirt} model}

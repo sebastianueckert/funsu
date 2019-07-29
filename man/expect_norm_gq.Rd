@@ -6,10 +6,10 @@
 \title{Calculate the expected value of f(X) with X~N(mu, sigma)}
 \usage{
 expect_norm_gq(fun, dimensions = 1, mu = rep(0, dimensions),
-  sigma = diag(1, dimensions), settings = defaults.gq(), ...)
+  sigma = diag(1, dimensions), settings = settings.gq(), ...)
 
 expect_norm_mc(fun, dimensions, mu = rep(0, dimensions),
-  sigma = diag(1, dimensions), settings = defaults.mc(), ...)
+  sigma = diag(1, dimensions), settings = settings.mc(), ...)
 }
 \arguments{
 \item{fun}{Function to integrate}

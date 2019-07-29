@@ -4,7 +4,8 @@
 \alias{irt_expected_cov_matrix}
 \title{Calculate expected item covariance matrix for a population}
 \usage{
-irt_expected_cov_matrix(model, mu = NULL, sigma = NULL)
+irt_expected_cov_matrix(model, mu = NULL, sigma = NULL,
+  settings = settings.irt_expected())
 }
 \arguments{
 \item{model}{A \code{mirt} model}

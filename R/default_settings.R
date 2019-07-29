@@ -1,17 +1,17 @@
 # The code in this file manages the settings for the different methods
 
 #'@export
-defaults.mc <- function(n_samples = 1000, seed = 123) merge_fmls_args()
+settings.mc <- function(n_samples = 1000, seed = 123) make_settings()
 
 #'@export
-defaults.gq <- function(quad_points = 5) merge_fmls_args()
+settings.gq <- function(quad_points = 5) make_settings()
 
 #'@export
-defaults.irt_expected <- function(gq.quad_points = 5) merge_fmls_args()
+settings.irt_expected <- function(gq.quad_points = 5) make_settings()
 
 # function combines the formals of the calling function with the arguments of the acutal call and returns
 # the results as a list
-merge_fmls_args <- function() {
+make_settings <- function() {
   fmls_caller <- as.list(formals(sys.function(sys.parent(n = 1))))
   args_caller <- as.list(match.call(sys.function(sys.parent(n = 1)), sys.call(sys.parent(n = 1))))[-1]
   purrr::list_modify(fmls_caller, !!!args_caller) %>%

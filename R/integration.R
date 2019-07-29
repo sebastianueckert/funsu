@@ -17,7 +17,7 @@
 #' f <- function(x) x^2
 #' expect_norm_gq(f)
 expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
-                         sigma=diag(1,dimensions), settings=defaults.gq(), ...){
+                         sigma=diag(1,dimensions), settings=settings.gq(), ...){
   if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
 
   additional.args <- c(list(), list(...))
@@ -59,7 +59,7 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
 #' @describeIn expect_norm_gq Calculation using Monte-Carlo sampling
 #' @export
 expect_norm_mc <- function(fun, dimensions, mu=rep(0,dimensions),
-                           sigma=diag(1,dimensions), settings=defaults.mc(), ...){
+                           sigma=diag(1,dimensions), settings=settings.mc(), ...){
   additional.args <- c(list(), list(...))
   check_required_settings(settings, "n_samples")
   n.samples <- settings$n_samples
