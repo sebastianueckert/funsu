@@ -8,3 +8,9 @@ test_that("settings can be changed", {
   expect_equal(settings.gq(3), list(quad_points = 3))
 
 })
+
+test_that("settings function creation works", {
+  my_settings <- function(opt_1 = 1) make_settings()
+  expect_equal(my_settings(), list(opt_1 = 1))
+  expect_equal(my_settings(opt_1 = 2), list(opt_1 = 2))
+})

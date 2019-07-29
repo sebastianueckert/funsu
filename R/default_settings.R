@@ -9,8 +9,19 @@ settings.gq <- function(quad_points = 5) make_settings()
 #'@export
 settings.irt_expected <- function(gq.quad_points = 5) make_settings()
 
-# function combines the formals of the calling function with the arguments of the acutal call and returns
-# the results as a list
+#' Make a settings function
+#'
+#' The function simplifies the creation of settings functions which return their arguments as a list. It works by
+#' combining the formals of the calling function with the arguments of the acutal call and returns
+#' the results as a list
+#'
+#' @return A list
+#' @export
+#'
+#' @examples
+#' my_settings <- function(opt_1 = 1) make_settings()
+#' settings <- my_settings()
+#' settings2 <- my_settings(opt_1 = 2)
 make_settings <- function() {
   fmls_caller <- as.list(formals(sys.function(sys.parent(n = 1))))
   args_caller <- as.list(match.call(sys.function(sys.parent(n = 1)), sys.call(sys.parent(n = 1))))[-1]
