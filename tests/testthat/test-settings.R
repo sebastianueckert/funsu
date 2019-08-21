@@ -19,3 +19,9 @@ test_that("nesting function works as expected",{
   expect_equal(nest_lst_by_name(list(gq.quad_points = 3, gq.option = TRUE, mc.option = FALSE, option = "test")),
                                 list(option = "test", gq = list(quad_points = 3, option = TRUE), mc = list(option = FALSE)))
 })
+
+test_that("this", {
+  my_settings <- function(alg1.opt1 = 1, alg1.opt2 = 2) make_settings()
+  alg1_settings <- function(opt1 = 1, opt2 = 2) make_settings()
+  my_settings2 <- function(alg1 = alg1_settings()) make_settings()
+})

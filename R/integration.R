@@ -21,6 +21,39 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
   if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
 
   additional.args <- c(list(), list(...))
+  gq_pw <- gq_points_weights(dimensions, mu, sigma, settings)
+  weights <- gq_pw$weights
+  grid_points <- gq_pw$grid_points
+  call.args <- c(additional.args, list(grid_points))
+  # evaluate function on all grid points
+  grid.results <- do.call(fun, call.args)
+  # transpose evaluation results to allow easier definition of f
+  grid.results <- t(grid.results)
+  # calculate weighted sum
+  drop(grid.results %*% weights)
+}
+
+
+
+#' Gaussian Quadrature points and weights
+#'
+#' The function returns the grid points and weights for the calculation of  means (or variances)
+#' of a function w.r.t. a normal distribution.
+#'
+#' @param dimensions Number of dimensions
+#' @param mu Mean of the normal distribution
+#' @param sigma Variance covariance matrix of the normal distribution
+#' @param settings Settings
+#'
+#' @return List with entries weights and grid_points
+#' @export
+#'
+#' @examples
+#' # points and weights for 2 dimensional integration with 3 grid points per dimension
+#' gq_points_weights(2, settings = settings.gq(quad_points = 3))
+gq_points_weights <- function(dimensions = 1,  mu=rep(0,dimensions),
+                           sigma=diag(1,dimensions), settings=settings.gq()) {
+  if(!requireNamespace("statmod", quietly = TRUE)) stop("The 'statmod' package needs to be installed to use this function.", call. = FALSE)
   check_required_settings(settings, "quad_points")
   n.quad.points <- settings$quad_points
   if(is.character(dimensions)) {
@@ -45,13 +78,8 @@ expect_norm_gq <- function(fun, dimensions = 1, mu=rep(0,dimensions),
   std_weights <-do.call(expand.grid, as.data.frame(std_weights_matrix))
 
   weights <- apply(std_weights, 1, prod)
-  call.args <- c(additional.args, list(scaled_grid_points))
-  # evaluate function on all grid points
-  grid.results <- do.call(fun, call.args)
-  # transpose evaluation results to allow easier definition of f
-  grid.results <- t(grid.results)
-  # calculate weighted sum
-  drop(grid.results %*% weights)
+  return(list(weights = weights,
+              grid_points = scaled_grid_points))
 }
 
 

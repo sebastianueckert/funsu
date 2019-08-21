@@ -2,6 +2,7 @@
 
 export(expect_norm_gq)
 export(expect_norm_mc)
+export(gq_points_weights)
 export(irt_expected_cov_matrix)
 export(irt_expected_item_response)
 export(make_settings)
